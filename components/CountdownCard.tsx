@@ -56,7 +56,7 @@ const CountdownCard = ({ id, label, current, previous }: { id: string, label: st
                 rotateX: [0, -180]
               }}
               transition={{
-                duration: 1
+                duration: 1.1
               }}
             >
               <div className="relative">
@@ -80,8 +80,7 @@ const CountdownCard = ({ id, label, current, previous }: { id: string, label: st
                 rotateX: [180, 0]
               }}
               transition={{
-                repeat: Infinity,
-                duration: 1
+                duration: 1.1
               }}
             >
               <div className="relative">
