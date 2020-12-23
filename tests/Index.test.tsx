@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, waitFor, act } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { useRouter } from 'next/router'
 
@@ -7,15 +7,10 @@ const mockedUseRouter = useRouter as jest.Mock<any>
 
 import Index from '../pages/index'
 
-function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
-
 describe('Index', () => {
   test('should display a countdown timer based on their query param', async () => {
-    const mockRouterPush = jest.fn()
     mockedUseRouter.mockImplementation(() => ({
-      query: mockRouterPush,
+      query: {},
     }))
     render(<Index />)
 
