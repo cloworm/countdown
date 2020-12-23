@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 
 import Countdown from '../components/Countdown'
 

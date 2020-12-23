@@ -1,11 +1,17 @@
-import { ReactElement } from 'react'
-import { motion } from 'framer-motion'
+import React, { ReactElement } from 'react'
 
 const padStart = (number: number): string => {
   return number.toString().padStart(2, '0')
 }
 
-const CountdownCard = ({ id, label, current, previous }: { id: string, label: string, current: number, previous: number|void }): ReactElement => {
+interface Props {
+  id: string
+  label: string
+  current: number
+  previous: number
+}
+
+const CountdownCard = ({ id, label, current, previous }: Props): ReactElement => {
   return (
     <div>
       <div className="relative">
@@ -32,7 +38,7 @@ const CountdownCard = ({ id, label, current, previous }: { id: string, label: st
           className="relative rounded-b-lg h-20 w-44 overflow-hidden"
         >
           <p className="absolute bottom-8 left-8 text-theme_softRed text-8xl font-bold">
-            {padStart(typeof previous !== 'undefined' ? previous : current)}
+            {padStart(previous)}
           </p>
           <svg width="11rem" height="5rem">
             <mask id={`${id}-m2`} fill="#fff">
@@ -48,7 +54,7 @@ const CountdownCard = ({ id, label, current, previous }: { id: string, label: st
           {label}
         </p>
 
-        { typeof previous !== 'undefined' && previous !== current ?
+        { previous !== current &&
           <>
             <div
               className="absolute top-0 left-0 rounded-t-lg h-20 w-44 overflow-hidden brightness-90 animate-flipTop origin-bottom backface-hidden"
@@ -86,7 +92,6 @@ const CountdownCard = ({ id, label, current, previous }: { id: string, label: st
               </div>
             </div>
           </>
-          : null
         }
       </div>
     </div>
