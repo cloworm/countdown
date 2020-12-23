@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint \"**/*.{ts,tsx}\" --quiet",
     "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "DEBUG_PRINT_LIMIT=10000 jest",
+    "test:watch": "DEBUG_PRINT_LIMIT=10000 jest --watch"
   },
   "dependencies": {
     "autoprefixer": "^10.1.0",
