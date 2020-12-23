@@ -39,6 +39,10 @@ module.exports = {
       'error',
       'never'
     ],
+    'react/jsx-boolean-value': [
+      'error',
+      'never'
+    ],
     // suppress errors for missing 'import React' in files
     'react/react-in-jsx-scope': 'off',
   },
