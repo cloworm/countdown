@@ -1,58 +1,11 @@
-import { ReactElement, useEffect, useState, useRef, useCallback } from 'react'
+import { ReactElement } from 'react'
 import { motion } from 'framer-motion'
-
-const usePrevious = (currentValue: number) => {
-  const previousValue = useRef(0)
-  useEffect(() => {
-    previousValue.current = currentValue
-  }, [currentValue])
-  return previousValue.current
-}
 
 const padStart = (number: number): string => {
   return number.toString().padStart(2, '0')
 }
 
-const CountdownCard = ({ id, label, children }: { id: string, label: string, children: number }): ReactElement => {
-  const [currentNumber, setCurrentNumber] = useState<number>(0)
-  const [animate, setAnimate] = useState<boolean>(false)
-  const previousChildren = usePrevious(currentNumber)
-
-  const checkShouldAnimate = useCallback(() => {
-    if (id === 'HOURS') {
-      console.log('animation complete')
-    }
-    // console.log('children', currentNumber, 'previousChildren', previousChildren)
-    // if (currentNumber === previousChildren) {
-    // setAnimate(false)
-    // }
-  }, [id])
-
-  const onStart = useCallback(() => {
-    if (id === 'HOURS') {
-      console.log('animation starting')
-    }
-    // console.log('children', currentNumber, 'previousChildren', previousChildren)
-    // if (currentNumber === previousChildren) {
-    // setAnimate(false)
-    // }
-  }, [id])
-
-  useEffect(() => {
-    if (typeof previousChildren === 'undefined') return
-
-    if (id === 'HOURS') {
-      console.table({ id, children, previousChildren, animate: children !== previousChildren })
-    }
-
-    const newAnimate = children !== previousChildren
-    if (newAnimate) setAnimate(newAnimate)
-  }, [id, children, previousChildren, setAnimate])
-
-  useEffect(() => {
-    setCurrentNumber(children)
-  }, [children])
-
+const CountdownCard = ({ id, label, current, previous }: { id: string, label: string, current: number, previous: number }): ReactElement => {
   return (
     <div>
       <div className="shadow-xl relative">
@@ -62,7 +15,7 @@ const CountdownCard = ({ id, label, children }: { id: string, label: string, chi
           className="relative rounded-t-lg h-20 w-44 overflow-hidden brightness-90"
         >
           <p className="absolute top-8 left-8 text-theme_softRed text-8xl font-bold">
-            {padStart(currentNumber)}
+            {padStart(current)}
           </p>
           <svg width="11rem" height="5rem">
             <mask id={`${id}-m`} fill="#fff">
@@ -79,7 +32,7 @@ const CountdownCard = ({ id, label, children }: { id: string, label: string, chi
           className="relative rounded-b-lg h-20 w-44 overflow-hidden"
         >
           <p className="absolute bottom-8 left-8 text-theme_softRed text-8xl font-bold">
-            {padStart(previousChildren)}
+            {padStart(previous)}
           </p>
           <svg width="11rem" height="5rem">
             <mask id={`${id}-m2`} fill="#fff">
@@ -95,22 +48,20 @@ const CountdownCard = ({ id, label, children }: { id: string, label: string, chi
           {label}
         </p>
 
-        { animate || currentNumber !== children ?
+        { previous !== current ?
           <>
             <motion.div
               className="absolute top-0 left-0 rounded-t-lg h-20 w-44 overflow-hidden brightness-90 origin-bottom backface-hidden"
               animate={{
                 rotateX: [0, -180]
               }}
-              onAnimationStart={onStart}
-              onAnimationComplete={checkShouldAnimate}
               transition={{
                 duration: 1
               }}
             >
               <div className="relative">
                 <p className="absolute top-8 left-8 text-theme_softRed text-8xl font-bold">
-                  {padStart(previousChildren)}
+                  {padStart(previous)}
                 </p>
                 <svg width="11rem" height="5rem">
                   <mask id={`${id}-m`} fill="#fff">
@@ -135,7 +86,7 @@ const CountdownCard = ({ id, label, children }: { id: string, label: string, chi
             >
               <div className="relative">
                 <p className="absolute bottom-8 left-8 text-theme_softRed text-8xl font-bold">
-                  {padStart(currentNumber)}
+                  {padStart(current)}
                 </p>
                 <svg width="11rem" height="5rem">
                   <mask id={`${id}-m2`} fill="#fff">
@@ -150,8 +101,6 @@ const CountdownCard = ({ id, label, children }: { id: string, label: string, chi
           </>
           : null
         }
-
-
       </div>
     </div>
   )
