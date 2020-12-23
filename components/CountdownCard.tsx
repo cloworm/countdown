@@ -37,7 +37,7 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
         <div
           className="relative rounded-b-lg h-20 w-44 overflow-hidden"
         >
-          <p className="absolute bottom-8 left-8 text-theme_softRed text-8xl font-bold">
+          <p className="absolute bottom-8 left-8 text-theme_softRed text-8xl font-bold" data-testid={id}>
             {padStart(previous)}
           </p>
           <svg width="11rem" height="5rem">
