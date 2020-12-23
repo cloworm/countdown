@@ -5,15 +5,9 @@ import { DateTime } from 'luxon'
 import CountdownCard from './CountdownCard'
 import useIsMounted from './hooks/useIsMounted'
 
-// 3. save current & previous for each id (days, hours...) with each tick of the tock
-// - every second, previous = current & current = new
-// 1. give each CountdownCard a key = id-current-previous - dont do this maybe
-// 2. send current & previous in to CountdownCard as props
-// - only animate CountdownCard once & stop after animationComplete
-
 interface CurrentPrevious {
   current: Countdown
-  previous: Countdown
+  previous: Countdown|null
 }
 
 interface Countdown {
@@ -36,16 +30,20 @@ const getTimeLeft = (endDate: DateTime): Countdown => {
 
 const useCountdown = (endDate: DateTime): CurrentPrevious => {
   const initial = getTimeLeft(endDate)
-  const [previous, setPrevious] = useState<Countdown>(initial)
-  const [current, setCurrent] = useState<Countdown>(initial)
+  const [{ current, previous }, setCountdown] = useState<CurrentPrevious>({ current: initial, previous: null })
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setPrevious(current)
-      setCurrent(getTimeLeft(endDate))
+      setCountdown(({ current }) => {
+        return {
+          previous: current,
+          current: getTimeLeft(endDate)
+        }
+      })
     }, 1000)
     return () => clearInterval(timer)
-  }, [current, endDate])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return { previous, current }
 }
@@ -60,14 +58,14 @@ const Countdown = (): ReactElement => {
       : debugTime
   )
 
-  if (!isMounted) return <></>
+  if (!isMounted || !previous) return <></>
 
   return (
     <div className="flex space-x-4">
-      <CountdownCard id="DAYS" label="DAYS" current={current.days} previous={previous.days} />
-      <CountdownCard id="HOURS" label="HOURS" current={current.hours} previous={previous.hours} />
-      <CountdownCard id="MINUTES" label="MINUTES" current={current.minutes} previous={previous.minutes} />
-      <CountdownCard id="SECONDS" label="SECONDS" current={current.seconds} previous={previous.seconds} />
+      <CountdownCard id={`days${current.days}-${previous?.days}`} label="DAYS" key={`days${current.days}-${previous?.days}`} current={current.days} previous={previous?.days} />
+      <CountdownCard id={`hours${current.hours}-${previous?.hours}`} label="HOURS" key={`hours${current.hours}-${previous?.hours}`} current={current.hours} previous={previous?.hours} />
+      <CountdownCard id={`minutes${current.minutes}-${previous?.minutes}`} label="MINUTES" key={`minutes${current.minutes}-${previous?.minutes}`} current={current.minutes} previous={previous?.minutes} />
+      <CountdownCard id={`seconds${current.seconds}-${previous?.seconds}`} label="SECONDS" key={`seconds${current.seconds}-${previous?.seconds}`} current={current.seconds} previous={previous?.seconds} />
     </div>
   )
 }

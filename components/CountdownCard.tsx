@@ -5,10 +5,10 @@ const padStart = (number: number): string => {
   return number.toString().padStart(2, '0')
 }
 
-const CountdownCard = ({ id, label, current, previous }: { id: string, label: string, current: number, previous: number }): ReactElement => {
+const CountdownCard = ({ id, label, current, previous }: { id: string, label: string, current: number, previous: number|void }): ReactElement => {
   return (
     <div>
-      <div className="shadow-xl relative">
+      <div className="relative">
 
         {/* Top Half Static */}
         <div
@@ -32,7 +32,7 @@ const CountdownCard = ({ id, label, current, previous }: { id: string, label: st
           className="relative rounded-b-lg h-20 w-44 overflow-hidden"
         >
           <p className="absolute bottom-8 left-8 text-theme_softRed text-8xl font-bold">
-            {padStart(previous)}
+            {padStart(typeof previous !== 'undefined' ? previous : current)}
           </p>
           <svg width="11rem" height="5rem">
             <mask id={`${id}-m2`} fill="#fff">
@@ -48,16 +48,10 @@ const CountdownCard = ({ id, label, current, previous }: { id: string, label: st
           {label}
         </p>
 
-        { previous !== current ?
+        { typeof previous !== 'undefined' && previous !== current ?
           <>
-            <motion.div
-              className="absolute top-0 left-0 rounded-t-lg h-20 w-44 overflow-hidden brightness-90 origin-bottom backface-hidden"
-              animate={{
-                rotateX: [0, -180]
-              }}
-              transition={{
-                duration: 1.1
-              }}
+            <div
+              className="absolute top-0 left-0 rounded-t-lg h-20 w-44 overflow-hidden brightness-90 animate-flipTop origin-bottom backface-hidden"
             >
               <div className="relative">
                 <p className="absolute top-8 left-8 text-theme_softRed text-8xl font-bold">
@@ -72,16 +66,10 @@ const CountdownCard = ({ id, label, current, previous }: { id: string, label: st
                   <use href={`#${id}-r`} fill="hsl(236, 21%, 26%)" mask={`url(#${id}-m)`} />
                 </svg>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="absolute top-20 left-0 rounded-b-lg h-20 w-44 overflow-hidden origin-top backface-hidden"
-              animate={{
-                rotateX: [180, 0]
-              }}
-              transition={{
-                duration: 1.1
-              }}
+            <div
+              className="absolute top-20 left-0 rounded-b-lg h-20 w-44 overflow-hidden animate-flipBottom origin-top backface-hidden"
             >
               <div className="relative">
                 <p className="absolute bottom-8 left-8 text-theme_softRed text-8xl font-bold">
@@ -96,7 +84,7 @@ const CountdownCard = ({ id, label, current, previous }: { id: string, label: st
                   <use href={`#${id}-r2`} fill="hsl(236, 21%, 26%)" mask={`url(#${id}-m2)`} />
                 </svg>
               </div>
-            </motion.div>
+            </div>
           </>
           : null
         }

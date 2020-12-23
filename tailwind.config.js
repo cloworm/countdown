@@ -14,11 +14,8 @@ module.exports = {
     },
     extend: {
       animation: {
-        front: 'flipDownFront 300ms ease-in both',
-        back: 'flipDownBack 300ms ease-in both',
-        under: 'fadeUnder 300ms ease-in both',
-        flipTop: 'flipTop 1s ease-in-out infinite',
-        flipBottom: 'flipBottom 1s ease-in-out infinite',
+        flipTop: 'flipTop 1s ease-in',
+        flipBottom: 'flipBottom 1s ease-in',
       },
       backgroundImage: {
         stars: 'url(\'/images/bg-stars.svg\')'
@@ -31,6 +28,16 @@ module.exports = {
         theme_veryDarkBlue: 'hsl(235, 16%, 14%)',
         theme_veryDarkMostlyBlackBlue: 'hsl(234, 17%, 12%)',
       },
+      keyframes: {
+        flipTop: {
+          '0%': { transform: 'rotateX(0deg)' },
+          '100%': { transform: 'rotateX(-180deg)' }
+        },
+        flipBottom: {
+          '0%': { transform: 'rotateX(180deg)' },
+          '100%': { transform: 'rotateX(0deg)' }
+        }
+      }
     },
   },
   variants: {
