@@ -47,4 +47,9 @@ const Home = (): ReactElement => {
   )
 }
 
+// Pages that are statically optimized by Automatic Static Optimization will be hydrated without their route parameters provided, i.e query will be an empty object ({}).
+Home.getInitialProps = async () => {
+  return {}
+}
+
 export default Home

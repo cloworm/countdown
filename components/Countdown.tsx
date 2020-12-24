@@ -21,10 +21,10 @@ const getTimeLeft = (endDate: DateTime): Countdown => {
   const now = DateTime.local()
   const { days, hours, minutes, seconds } = endDate.diff(now, ['days', 'hours', 'minutes', 'seconds'])
   return {
-    days: Math.trunc(days),
-    hours: Math.trunc(hours),
-    minutes: Math.trunc(minutes),
-    seconds: Math.trunc(seconds)
+    days: Math.max(0, Math.trunc(days)),
+    hours: Math.max(0, Math.trunc(hours)),
+    minutes: Math.max(0, Math.trunc(minutes)),
+    seconds: Math.max(0, Math.trunc(seconds))
   }
 }
 
@@ -51,11 +51,12 @@ const useCountdown = (endDate: DateTime): CurrentPrevious => {
 const Countdown = (): ReactElement => {
   const isMounted = useIsMounted()
   const router = useRouter()
-  const debugTime = useMemo(() => DateTime.local().plus({ days: 1, hours: 0, minutes: 0, seconds: 3 }), [])
+  const defaultTime = useMemo(() => DateTime.local().plus({ days: 1, hours: 0, minutes: 0, seconds: 3 }), [])
+  const initialDate = router.query?.date ? DateTime.fromISO(Array.isArray(router.query.date) ? router.query.date[0] : router.query.date) : null
   const { current, previous } = useCountdown(
-    router.query?.date
-      ? DateTime.fromISO(Array.isArray(router.query.date) ? router.query.date[0] : router.query.date)
-      : debugTime
+    initialDate?.isValid
+      ? initialDate
+      : defaultTime
   )
 
   if (!isMounted) return <></>
