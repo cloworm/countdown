@@ -15,7 +15,7 @@ describe('Index', () => {
     }))
     render(<Index />)
 
-    expect(screen.getByRole('heading')).toHaveTextContent('WE\'RE LAUNCHING SOON')
+    expect(screen.getByRole('heading')).toHaveTextContent('WE’RE LAUNCHING SOON')
 
     await waitFor(() => expect(screen.getByTestId('seconds1-2')).toHaveTextContent('02'))
     expect(screen.getByTestId('minutes0-0')).toHaveTextContent('00')
@@ -47,7 +47,7 @@ describe('Index', () => {
     }))
     render(<Index />)
 
-    expect(screen.getByRole('heading')).toHaveTextContent('WE\'RE LAUNCHING SOON')
+    expect(screen.getByRole('heading')).toHaveTextContent('WE’RE LAUNCHING SOON')
 
     await waitFor(() => expect(screen.getByTestId('seconds0-1')).toHaveTextContent('01'))
     expect(screen.getByTestId('minutes12-12')).toHaveTextContent('12')
