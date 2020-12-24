@@ -58,6 +58,13 @@ module.exports = {
         },
         '.backface-hidden': {
           backfaceVisibility: 'hidden'
+        },
+        '.preserve-3d': {
+          'transform-style': 'preserve-3d'
+        },
+        '.perspective': {
+          'perspective-origin': '50% 50%',
+          perspective: '450px'
         }
       }
 

@@ -15,7 +15,7 @@ const Home = (): ReactElement => {
       </Head>
 
       <main className="relative flex flex-col items-center justify-center bg-theme_veryDarkMostlyBlackBlue min-h-screen bg-stars">
-        <h1 className="text-white text-3xl text-center font-bold tracking-widest pb-32">
+        <h1 className="text-white text-2xl text-center font-bold tracking-widest pb-32">
           WE&apos;RE LAUNCHING SOON
         </h1>
 
