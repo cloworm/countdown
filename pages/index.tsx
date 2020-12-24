@@ -24,10 +24,9 @@ const Home = (): ReactElement => {
         </div>
 
         <div className="absolute bottom-0 bg-hills left-0 right-0 h-44 bg-no-repeat bg-cover bg-x-82">
-          {/* <img className="w-full h-52 lg:w-screen" src="/images/pattern-hills.svg" /> */}
         </div>
 
-        <div className="absolute bottom-20 right-0 left-0">
+        <div className="absolute bottom-10 lg:bottom-20 right-0 left-0">
           <div className="flex">
             <div className="flex flex-row text-center justify-items-center space-x-8 ml-auto mr-auto">
               <a href="#" className="text-theme_grayishBlue hover:text-theme_softRed">
