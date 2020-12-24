@@ -40,7 +40,6 @@ describe('Index', () => {
 
   test('should display a countdown timer based on their query param that uses the data query param', async () => {
     const testDate = DateTime.local().plus({ days: 7, hours: 3, minutes: 12, seconds: 2 }).toISO()
-    console.log('testDate!!', testDate)
     mockedUseRouter.mockImplementation(() => ({
       query: {
         date: testDate
