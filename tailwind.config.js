@@ -29,6 +29,9 @@ module.exports = {
         theme_veryDarkBlue: 'hsl(235, 16%, 14%)',
         theme_veryDarkMostlyBlackBlue: 'hsl(234, 17%, 12%)',
       },
+      fontSize: {
+        'xxs': '0.5rem'
+      },
       keyframes: {
         flipTop: {
           '0%': { transform: 'rotateX(0deg)' },

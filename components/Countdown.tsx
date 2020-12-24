@@ -61,7 +61,7 @@ const Countdown = (): ReactElement => {
   if (!isMounted) return <></>
 
   return (
-    <div className="flex space-x-2.5 lg:space-x-10">
+    <div className="flex space-x-1 lg:space-x-10">
       <CountdownCard id={`days${current.days}-${previous?.days}`} label="DAYS" key={`days${current.days}-${previous?.days}`} current={current.days} previous={previous?.days} />
       <CountdownCard id={`hours${current.hours}-${previous?.hours}`} label="HOURS" key={`hours${current.hours}-${previous?.hours}`} current={current.hours} previous={previous?.hours} />
       <CountdownCard id={`minutes${current.minutes}-${previous?.minutes}`} label="MINUTES" key={`minutes${current.minutes}-${previous?.minutes}`} current={current.minutes} previous={previous?.minutes} />

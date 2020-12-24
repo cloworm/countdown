@@ -50,7 +50,7 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
           </svg>
         </div>
 
-        <p className="text-xs lg:text-base text-center text-theme_grayishBlue lg:font-bold tracking-widest pt-7">
+        <p className="text-xxs lg:text-base text-center text-theme_grayishBlue lg:font-bold tracking-widest pt-3.5 lg:pt-7">
           {label}
         </p>
 
@@ -59,7 +59,7 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
             <div
               className="absolute top-0 left-0 rounded-t-lg h-10 w-20 lg:h-20 lg:w-44 overflow-hidden brightness-80 animate-flipTop origin-bottom preserve-3d backface-hidden"
             >
-              <div className="relative">
+              <div className="relative h-10 lg:h-20">
                 <p className="absolute top-5 lg:top-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold">
                   {typeof previous === 'undefined' ? '' : padStart(previous)}
                 </p>
@@ -77,7 +77,7 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
             <div
               className="absolute top-10 lg:top-20 left-0 rounded-b-lg h-10 w-20 lg:h-20 lg:w-44 overflow-hidden animate-flipBottom origin-top preserve-3d backface-hidden"
             >
-              <div className="relative">
+              <div className="relative h-10 lg:h-20">
                 <p className="absolute bottom-5 lg:bottom-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold">
                   {typeof current === 'undefined' ? '' : padStart(current)}
                 </p>
