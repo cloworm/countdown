@@ -18,7 +18,8 @@ module.exports = {
         flipBottom: 'flipBottom 1s ease-in',
       },
       backgroundImage: {
-        stars: 'url(\'/images/bg-stars.svg\')'
+        stars: 'url(\'/images/bg-stars.svg\')',
+        hills: 'url(\'/images/pattern-hills.svg\')'
       },
       colors: {
         theme_grayishBlue: 'hsl(237, 18%, 59%)',
@@ -65,6 +66,9 @@ module.exports = {
         '.perspective': {
           'perspective-origin': '50% 50%',
           perspective: '450px'
+        },
+        '.bg-x-82': {
+          'background-position-x': '82%'
         }
       }
 
