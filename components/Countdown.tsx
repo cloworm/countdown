@@ -21,10 +21,10 @@ const getTimeLeft = (endDate: DateTime): Countdown => {
   const now = DateTime.local()
   const { days, hours, minutes, seconds } = endDate.diff(now, ['days', 'hours', 'minutes', 'seconds'])
   return {
-    days: Math.trunc(days),
-    hours: Math.trunc(hours),
-    minutes: Math.trunc(minutes),
-    seconds: Math.trunc(seconds)
+    days: Math.max(0, Math.trunc(days)),
+    hours: Math.max(0, Math.trunc(hours)),
+    minutes: Math.max(0, Math.trunc(minutes)),
+    seconds: Math.max(0, Math.trunc(seconds))
   }
 }
 
