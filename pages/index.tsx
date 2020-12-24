@@ -24,7 +24,7 @@ const Home = (): ReactElement => {
         </div>
 
         <div className="absolute bottom-0 left-0 right-0">
-          <img src="/images/pattern-hills.svg" />
+          <img className="w-screen" src="/images/pattern-hills.svg" />
         </div>
 
         <div className="absolute bottom-20 right-0 left-0">
