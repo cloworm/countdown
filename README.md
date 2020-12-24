@@ -6,7 +6,13 @@ Countdown app frontend challenge from [Frontend Mentor](https://www.frontendment
 
 ## [Demo](https://countdown.cloworm.vercel.app/)
 
-### Preview
+## Screenshots
+
+### Desktop
+<img src="https://user-images.githubusercontent.com/5566310/103051331-942dae80-4564-11eb-8d6e-7b757d03e8c8.png" width="500" alt="Desktop">
+
+### Mobile
+<img src="https://user-images.githubusercontent.com/5566310/103051371-a4de2480-4564-11eb-8e14-facb77d8e374.png" width="300" alt="Mobile">
 
 ## Features
 * See a live countdown timer that ticks down every second
@@ -38,4 +44,10 @@ Countdown app frontend challenge from [Frontend Mentor](https://www.frontendment
 
       ```
       npm run dev
+      ```
+
+4. Run tests
+
+      ```
+      npm run test
       ```
