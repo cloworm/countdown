@@ -64,12 +64,12 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
                   {typeof previous === 'undefined' ? '' : padStart(previous)}
                 </p>
                 <svg width="100%" height="100%">
-                  <mask id={`${id}-m`} fill="#fff">
-                    <rect id={`${id}-r`} width="100%" height="100%"/>
+                  <mask id={`${id}-mbottom`} fill="#fff">
+                    <rect id={`${id}-rbottom`} width="100%" height="100%"/>
                     <circle r="8" fill="#000" cx="0" cy="100%" />
                     <circle r="8" fill="#000" cx="100%" cy="100%" />
                   </mask>
-                  <use href={`#${id}-r`} fill="hsl(236, 21%, 26%)" mask={`url(#${id}-m)`} />
+                  <use href={`#${id}-rbottom`} fill="hsl(236, 21%, 26%)" mask={`url(#${id}-mbottom)`} />
                 </svg>
               </div>
             </div>
@@ -82,12 +82,12 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
                   {typeof current === 'undefined' ? '' : padStart(current)}
                 </p>
                 <svg width="100%" height="100%">
-                  <mask id={`${id}-m2`} fill="#fff">
-                    <rect id={`${id}-r2`} width="100%" height="100%"/>
+                  <mask id={`${id}-m2bottom`} fill="#fff">
+                    <rect id={`${id}-r2bottom`} width="100%" height="100%"/>
                     <circle r="8" fill="#000" cx="0" cy="0" />
                     <circle r="8" fill="#000" cx="100%" cy="0" />
                   </mask>
-                  <use href={`#${id}-r2`} fill="hsl(236, 21%, 26%)" mask={`url(#${id}-m2)`} />
+                  <use href={`#${id}-r2bottom`} fill="hsl(236, 21%, 26%)" mask={`url(#${id}-m2bottom)`} />
                 </svg>
               </div>
             </div>
