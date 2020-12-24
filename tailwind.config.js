@@ -53,8 +53,8 @@ module.exports = {
     }),
     plugin(function ({ addUtilities }) {
       const newUtilities = {
-        '.brightness-90': {
-          filter: 'brightness(90%)'
+        '.brightness-80': {
+          filter: 'brightness(80%)'
         },
         '.backface-hidden': {
           backfaceVisibility: 'hidden'

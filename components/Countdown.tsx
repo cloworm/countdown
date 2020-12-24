@@ -58,14 +58,14 @@ const Countdown = (): ReactElement => {
       : debugTime
   )
 
-  if (!isMounted || !previous) return <></>
+  if (!isMounted) return <></>
 
   return (
     <div className="flex space-x-10">
-      <CountdownCard id={`days${current.days}-${previous.days}`} label="DAYS" key={`days${current.days}-${previous.days}`} current={current.days} previous={previous.days} />
-      <CountdownCard id={`hours${current.hours}-${previous.hours}`} label="HOURS" key={`hours${current.hours}-${previous.hours}`} current={current.hours} previous={previous.hours} />
-      <CountdownCard id={`minutes${current.minutes}-${previous.minutes}`} label="MINUTES" key={`minutes${current.minutes}-${previous.minutes}`} current={current.minutes} previous={previous.minutes} />
-      <CountdownCard id={`seconds${current.seconds}-${previous.seconds}`} label="SECONDS" key={`seconds${current.seconds}-${previous.seconds}`} current={current.seconds} previous={previous.seconds} />
+      <CountdownCard id={`days${current.days}-${previous?.days}`} label="DAYS" key={`days${current.days}-${previous?.days}`} current={current.days} previous={previous?.days} />
+      <CountdownCard id={`hours${current.hours}-${previous?.hours}`} label="HOURS" key={`hours${current.hours}-${previous?.hours}`} current={current.hours} previous={previous?.hours} />
+      <CountdownCard id={`minutes${current.minutes}-${previous?.minutes}`} label="MINUTES" key={`minutes${current.minutes}-${previous?.minutes}`} current={current.minutes} previous={previous?.minutes} />
+      <CountdownCard id={`seconds${current.seconds}-${previous?.seconds}`} label="SECONDS" key={`seconds${current.seconds}-${previous?.seconds}`} current={current.seconds} previous={previous?.seconds} />
     </div>
   )
 }

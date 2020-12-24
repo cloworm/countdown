@@ -7,8 +7,8 @@ const padStart = (number: number): string => {
 interface Props {
   id: string
   label: string
-  current: number
-  previous: number
+  current?: number
+  previous?: number
 }
 
 const CountdownCard = ({ id, label, current, previous }: Props): ReactElement => {
@@ -18,10 +18,10 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
 
         {/* Top Half Static */}
         <div
-          className="relative rounded-t-lg h-20 w-44 overflow-hidden brightness-90"
+          className="relative rounded-t-lg h-20 w-44 overflow-hidden brightness-80"
         >
           <p className="absolute top-8 left-0 right-0 text-center text-theme_softRed text-8xl font-bold">
-            {padStart(current)}
+            {typeof current === 'undefined' ? '' : padStart(current)}
           </p>
           <svg width="11rem" height="5rem">
             <mask id={`${id}-m`} fill="#fff">
@@ -38,7 +38,7 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
           className="relative rounded-b-lg h-20 w-44 overflow-hidden"
         >
           <p className="absolute bottom-8 left-0 right-0 text-center text-theme_softRed text-8xl font-bold" data-testid={id}>
-            {padStart(previous)}
+            {typeof previous === 'undefined' ? '' : padStart(previous)}
           </p>
           <svg width="11rem" height="5rem">
             <mask id={`${id}-m2`} fill="#fff">
@@ -61,7 +61,7 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
             >
               <div className="relative">
                 <p className="absolute top-8 left-0 right-0 text-center text-theme_softRed text-8xl font-bold">
-                  {padStart(previous)}
+                  {typeof previous === 'undefined' ? '' : padStart(previous)}
                 </p>
                 <svg width="11rem" height="5rem">
                   <mask id={`${id}-m`} fill="#fff">
@@ -79,7 +79,7 @@ const CountdownCard = ({ id, label, current, previous }: Props): ReactElement =>
             >
               <div className="relative">
                 <p className="absolute bottom-8 left-0 right-0 text-center text-theme_softRed text-8xl font-bold">
-                  {padStart(current)}
+                  {typeof current === 'undefined' ? '' : padStart(current)}
                 </p>
                 <svg width="11rem" height="5rem">
                   <mask id={`${id}-m2`} fill="#fff">
